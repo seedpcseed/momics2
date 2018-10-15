@@ -1,0 +1,10 @@
+Target:
+  - output
+
+Steps:
+  - load_configuration
+  - kneaddata
+  - metaphlan
+  - humann
+
+Reports:
