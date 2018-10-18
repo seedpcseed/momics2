@@ -1,10 +1,5 @@
-Target:
-  - output
+kneadData_paired:
+  Call: kneadData_paired
+  Flags: "INPUT_FOLDER='fastqs.processed' , OUTPUT= 'kneaddata', PATTERN='*.fastqs.gz'"
 
-Steps:
-  - load_configuration
-  - kneaddata
-  - metaphlan
-  - humann
 
-Reports:
