@@ -29,7 +29,7 @@ kneadData_single<- function(
     code=paste0("kneaddata --input ", i, " --reference-db ",
                 REFERENCE_DB, " --output ", OUTPUT)
     if(SINGULARITY){
-      code=paste0("singularity exec -B", SINGULARITY_B, " ", SINGULARITY_IMAGE, " ", code)
+      code=paste0("singularity exec -B ", SINGULARITY_B, " ", SINGULARITY_IMAGE, " ", code)
     }
     system(code)
   }
@@ -55,7 +55,7 @@ kneadData_paired<-function(
     code=paste0("kneaddata --input ", R1[i], "--input ", R2[i], " --reference-db ",
                 REFERENCE_DB, " --output ", OUTPUT)
     if(SINGULARITY){
-      code=paste0("singularity exec -B", SINGULARITY_B, " ", SINGULARITY_IMAGE, " ", code)
+      code=paste0("singularity exec -B ", SINGULARITY_B, " ", SINGULARITY_IMAGE, " ", code)
     }
     system(code)
   }
