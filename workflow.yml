@@ -3,3 +3,5 @@ kneadData_paired:
   Flags: "INPUT_FOLDER='fastqs.processed' , OUTPUT= 'kneaddata', PATTERN='*.fastqs.gz'"
 
 
+
+
