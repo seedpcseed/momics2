@@ -12,7 +12,6 @@ yaml_call<- function(x){
   do_function(x[[1]], x[[2]])
 }
 
-
 run_workflow<- function(yml="workflow.yml"){
     c<- read_yaml(yml)
     counter=length(c)

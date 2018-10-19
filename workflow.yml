@@ -1,6 +1,6 @@
-biokneadData_paired:
+kneadData_paired:
   Call: kneadData_paired
-  Flags: "--INPUT_FOLDER='fastqs' --OUTPUT= 'kneaddata' --PATTERN1='R1' --PATTERN2='R2'"
+  Flags: --INPUT_FOLDER=fastqs --OUTPUT=kneaddata --PATTERN1=R1 --PATTERN2=R2
 
 
 
