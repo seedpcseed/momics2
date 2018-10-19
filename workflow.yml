@@ -4,6 +4,9 @@ Steps:
   kneadData_paired:
     Call: kneadData_paired
     Flags: --INPUT_FOLDER=fastqs --OUTPUT=kneaddata --PATTERN1=R1 --PATTERN2=R2
+  metaphlan2:
+    Call: metaphlan
+    Flags: --INPUT_FOLDER=kneaddata --OUTPUT metaphlan
 
 Reports:
 

@@ -15,10 +15,11 @@ metaphlan<- function(
   ignore_eukaryotes=FALSE,
   ignore_bacteria=FALSE,
   ignore_archaea=FALSE,
-  pres_th,
+  ignore_viruses=FALSE,
   clade=TRUE,
   biom_output=TRUE,
-  THREADS=THREADS
+  THREADS=THREADS,
+  MERGE=TRUE
 ){
   #construct the system call
   INPUT_FOLDER=file.path(getwd(), INPUT_FOLDER)
@@ -29,18 +30,45 @@ metaphlan<- function(
   print(q)
   if(!dir.exists(OUTPUT)){system(paste0("mkdir ", OUTPUT))}
 
-  q<- sprintf("PATTERN1: %s and PATTERN2: %s", PATTERN1, PATTERN2)
+  q<- sprintf("PATTERN: %s", PATTERN)
   print(q)
 
   R1=list.files(INPUT_FOLDER, pattern=PATTERN1, include.dirs=TRUE, full.names = TRUE)
+
+  for(i in R1){
+    first_split<- strsplit(as.character(i), "/")
+    seq_name<- strsplit(as.character(first_split[[1]])[length(first[[1]])], ".",
+                        fixed=TRUE)[[1]][[1]]
+
+    output_file<- file.path(OUTPUT, paste0(seq_name, ".tax_level_", tax_lev,
+                                           ".metaphlan.txt"))
+    code=paste0("metaphlan2.py ",
+                i,
+                " --nproc ", THREADS,
+                " --input_type ", input_type,
+                " --bowtie2db ", METAPHLAN2_DB,
+                " --tax_lev ", tax_lev,
+                " --ignore_eukaryotes ", ignore_eukaryotes,
+                " --ignore_bacteria ", ignore_bacteria,
+                " --ignore_viruses", ignore_viruses,
+                " --ignore_archea", ignore_archaea,
+                " --clade ", clade,
+                " --biom ", biom_output,
+                " > ", output_file)
+    if(SINGULARITY){
+      code=paste0("singularity exec -B ", SINGULARITY_B, " ", SINGULARITY_IMAGE, " ", code)
+    }
+    q<-sprintf("Code: %s", code)
+    print(q)
+    system(code)
+  }
 }
 
 
-
 merge_metaphlan_tables<- function(
-  input_folder,
-  profile_string,
-  output
+  INPUT_FOLDER,
+  PATTERN,
+  OUTPUT
 ){
 
 
