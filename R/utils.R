@@ -14,6 +14,7 @@ yaml_call<- function(x){
 
 run_workflow<- function(yml="workflow.yml"){
     c<- read_yaml(yml)
+    c<- c[[2]]
     counter=length(c)
 
     for(i in 1:counter){

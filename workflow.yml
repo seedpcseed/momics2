@@ -1,7 +1,11 @@
-kneadData_paired:
-  Call: kneadData_paired
-  Flags: --INPUT_FOLDER=fastqs --OUTPUT=kneaddata --PATTERN1=R1 --PATTERN2=R2
+Comments:
 
+Steps:
+  kneadData_paired:
+    Call: kneadData_paired
+    Flags: --INPUT_FOLDER=fastqs --OUTPUT=kneaddata --PATTERN1=R1 --PATTERN2=R2
+
+Reports:
 
 
 
