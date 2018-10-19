@@ -10,13 +10,13 @@ yaml_call<- function(x){
 }
 
 
-run_workflow<- function(yml="workflow.yml"){
-  c<- read_yaml(yml)
-  counter=length(c)
+  run_workflow<- function(yml="workflow.yml"){
+    c<- read_yaml(yml)
+    counter=length(c)
 
-  for(i in 1:counter){
-    sprintf("| STEP: %s", c[[i]][[1]])
-    yaml_call(c[[i]])
+    for(i in 1:counter){
+      sprintf("| STEP: %s", c[[i]][[1]])
+      yaml_call(c[[i]])
+    }
   }
-}
 

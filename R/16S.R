@@ -3,6 +3,4 @@
 #
 
 
-library(dada2)
-library(phyloseq)
 
